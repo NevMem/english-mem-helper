@@ -71,8 +71,8 @@ class MainPage extends Component {
     return (
       <Container style={{ height: "100%" }}>
         <Modal basic open={this.state.open} onClose={this.close.bind(this)}>
-          <Header icon="browser" content="Examples for this" />
-          <Modal.Content>{example}</Modal.Content>
+          <Header as='h2' icon="browser" content="Examples" />
+          <Modal.Content><p style={{fontSize: '20px'}}>{example}</p></Modal.Content>
           <Modal.Actions>
             <Button color="green" onClick={this.close.bind(this)} inverted>
               <Icon name="checkmark" /> Got it
