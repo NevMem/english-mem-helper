@@ -104,7 +104,7 @@ class MainPage extends Component {
           </Modal.Actions>
         </Modal>
         <Grid style={{ height: "100%" }}>
-          <Grid.Row style={{ height: "calc(100% - 80px)" }}>
+          <Grid.Row style={{ height: "calc(100% - 150px)" }}>
             <Grid.Column style={{ height: "calc(100%)" }}>
               <Segment
                 textAlign="center"
@@ -120,32 +120,40 @@ class MainPage extends Component {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={4}>
+            <Grid.Column width={16} textAlign="center">
               <Button
-                onClick={this.swap.bind(this)}
-                size="huge"
-                color="violet"
-                inverted
-                content="Swap"
-              />
-            </Grid.Column>
-            <Grid.Column width={8} textAlign="center">
-              <Button
+                loading = {this.state.loading}
                 onClick={this.example.bind(this)}
                 size="huge"
                 color="red"
                 inverted
                 content="Example"
+                style={{width: "100%"}}
               />
             </Grid.Column>
-            <Grid.Column width={4} floated="right">
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={8}>
               <Button
+                loading={this.state.loading}
+                onClick={this.swap.bind(this)}
+                size="huge"
+                color="violet"
+                inverted
+                content="Swap"
+                style={{width: "100%"}}
+              />
+            </Grid.Column>
+            <Grid.Column width={8} floated="right">
+              <Button
+                loading={this.state.loading}
                 onClick={this.nextQuestion.bind(this)}
                 inverted
                 size="huge"
                 color="yellow"
                 content="Next"
                 floated="right"
+                style={{width: "100%"}}
               />
             </Grid.Column>
           </Grid.Row>
