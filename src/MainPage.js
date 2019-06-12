@@ -10,7 +10,7 @@ import {
 } from "semantic-ui-react";
 import axios from "axios";
 
-import RandomEngine from './SpecialRandomEngine'
+import RandomEngine from "./SpecialRandomEngine";
 
 class MainPage extends Component {
   constructor(prps) {
@@ -22,13 +22,17 @@ class MainPage extends Component {
       mode: "ru",
       open: false,
       engine: new RandomEngine(0),
-      prop: 0,
+      prop: 0
     };
   }
 
   nextQuestion() {
-    let randomNext = this.state.engine.next()
-    this.setState({ index: randomNext.value, prop: randomNext.propability, mode: "ru" });
+    let randomNext = this.state.engine.next();
+    this.setState({
+      index: randomNext.value,
+      prop: randomNext.propability,
+      mode: "ru"
+    });
   }
 
   componentDidMount() {
@@ -41,9 +45,9 @@ class MainPage extends Component {
             loading: false,
             data: data
           },
-          () => { 
-            this.state.engine.setSize(data.length)
-            this.nextQuestion()
+          () => {
+            this.state.engine.setSize(data.length);
+            this.nextQuestion();
           }
         );
       });
@@ -69,7 +73,13 @@ class MainPage extends Component {
     if (this.state.index !== -1) {
       show = (
         <div>
-          <p style={{textAlign: 'left', fontSize: '13px', color: 'rgba(200, 200, 200, 0.3)'}}>
+          <p
+            style={{
+              textAlign: "left",
+              fontSize: "13px",
+              color: "rgba(200, 200, 200, 0.3)"
+            }}
+          >
             {this.state.prop} %
           </p>
           <p style={{ marginTop: "calc(50vh - 100px)" }}>
@@ -83,8 +93,10 @@ class MainPage extends Component {
     return (
       <Container style={{ height: "100%" }}>
         <Modal basic open={this.state.open} onClose={this.close.bind(this)}>
-          <Header as='h2' icon="browser" content="Examples" />
-          <Modal.Content><p style={{fontSize: '20px'}}>{example}</p></Modal.Content>
+          <Header as="h2" icon="browser" content="Examples" />
+          <Modal.Content>
+            <p style={{ fontSize: "20px" }}>{example}</p>
+          </Modal.Content>
           <Modal.Actions>
             <Button color="green" onClick={this.close.bind(this)} inverted>
               <Icon name="checkmark" /> Got it
