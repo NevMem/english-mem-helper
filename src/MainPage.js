@@ -10,6 +10,8 @@ import {
 } from "semantic-ui-react";
 import axios from "axios";
 
+import RandomEngine from './SpecialRandomEngine'
+
 class MainPage extends Component {
   constructor(prps) {
     super(prps);
@@ -18,13 +20,15 @@ class MainPage extends Component {
       loading: true,
       index: -1,
       mode: "ru",
-      open: false
+      open: false,
+      engine: new RandomEngine(0),
+      prop: 0,
     };
   }
 
   nextQuestion() {
-    let nextIndex = (Math.random() * this.state.data.length) | 0;
-    this.setState({ index: nextIndex, mode: "ru" });
+    let randomNext = this.state.engine.next()
+    this.setState({ index: randomNext.value, prop: randomNext.propability, mode: "ru" });
   }
 
   componentDidMount() {
@@ -37,7 +41,10 @@ class MainPage extends Component {
             loading: false,
             data: data
           },
-          () => this.nextQuestion()
+          () => { 
+            this.state.engine.setSize(data.length)
+            this.nextQuestion()
+          }
         );
       });
   }
@@ -61,9 +68,14 @@ class MainPage extends Component {
     let example = "No examples";
     if (this.state.index !== -1) {
       show = (
-        <p style={{ marginTop: "calc(50vh - 100px)" }}>
-          {this.state.data[this.state.index][this.state.mode]}
-        </p>
+        <div>
+          <p style={{textAlign: 'left', fontSize: '13px', color: 'rgba(200, 200, 200, 0.3)'}}>
+            {this.state.prop} %
+          </p>
+          <p style={{ marginTop: "calc(50vh - 100px)" }}>
+            {this.state.data[this.state.index][this.state.mode]}
+          </p>
+        </div>
       );
       if (this.state.data[this.state.index].ex)
         example = this.state.data[this.state.index].ex;
