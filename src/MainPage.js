@@ -122,13 +122,13 @@ class MainPage extends Component {
           <Grid.Row>
             <Grid.Column width={16} textAlign="center">
               <Button
-                loading = {this.state.loading}
+                loading={this.state.loading}
                 onClick={this.example.bind(this)}
                 size="huge"
                 color="red"
                 inverted
                 content="Example"
-                style={{width: "100%"}}
+                style={{ width: "100%" }}
               />
             </Grid.Column>
           </Grid.Row>
@@ -141,7 +141,7 @@ class MainPage extends Component {
                 color="violet"
                 inverted
                 content="Swap"
-                style={{width: "100%"}}
+                style={{ width: "100%" }}
               />
             </Grid.Column>
             <Grid.Column width={8} floated="right">
@@ -153,7 +153,7 @@ class MainPage extends Component {
                 color="yellow"
                 content="Next"
                 floated="right"
-                style={{width: "100%"}}
+                style={{ width: "100%" }}
               />
             </Grid.Column>
           </Grid.Row>
